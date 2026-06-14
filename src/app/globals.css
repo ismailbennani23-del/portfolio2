@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-900: #071626;
+  --ink-800: #0C2438;
+  --ink-700: #15364F;
+  --accent: #C9A24B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #0c2236;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern";
+}
+
+::selection {
+  background: #f3ecd9;
+  color: #846b22;
+}
+
+@layer components {
+  /* shared shell + spacing */
+  .shell {
+    @apply mx-auto max-w-shell px-7;
+  }
+  .section {
+    @apply py-[78px] md:py-[104px];
+  }
+
+  /* eyebrow label */
+  .eyebrow {
+    @apply font-mono text-[12px] font-medium uppercase tracking-[0.18em] text-accent-600;
+  }
+  .eyebrow-line {
+    @apply flex items-center gap-3 font-mono text-[12px] font-medium uppercase tracking-[0.18em] text-accent-600;
+  }
+  .eyebrow-line::before {
+    content: "";
+    @apply block h-px w-[26px] bg-accent;
+  }
+
+  /* buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-[9px] border border-transparent px-6 py-[13px]
+           text-[15px] font-semibold transition-all duration-200 ease-smooth;
+  }
+  .btn-primary {
+    @apply bg-accent text-ink-900 hover:brightness-105 hover:-translate-y-0.5
+           hover:shadow-[0_12px_30px_-12px_rgba(201,162,75,0.55)];
+  }
+  .btn-ghost {
+    @apply border-white/20 text-white hover:border-white hover:bg-white/5;
+  }
+  .btn-dark {
+    @apply bg-ink-800 text-white hover:bg-ink-700 hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply border-line bg-white text-navy hover:border-accent hover:text-accent-600 hover:-translate-y-0.5;
+  }
+
+  .chip {
+    @apply rounded-lg border border-line bg-white px-[13px] py-[7px] text-[13.5px] font-medium text-navy
+           transition-all duration-200 hover:-translate-y-px hover:border-accent hover:text-accent-600;
+  }
+}
+
+/* graph-paper grid texture for dark panels */
+.grid-texture {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
